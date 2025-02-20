@@ -1,4 +1,5 @@
 import { Button } from "@/src/components/reuseables/button";
+import { signIn } from "@/src/lib/auth/auth";
 import React from "react";
 
 const Login = () => {
@@ -10,7 +11,13 @@ const Login = () => {
           <p className="">Enter your email to sign in to your account</p>
         </header>
         <div className="mt-6 w-full">
-          <form className="w-full space-y-5">
+          <form
+            action={async () => {
+              "use server";
+              await signIn();
+            }}
+            className="w-full space-y-5"
+          >
             <div className="space-y-1 w-full">
               <label htmlFor="email" className="block">
                 Email
