@@ -1,4 +1,4 @@
-import { Button } from "@/components/reuseables/button";
+import { Button } from "@/src/components/reuseables/button";
 import React from "react";
 
 const Login = () => {
