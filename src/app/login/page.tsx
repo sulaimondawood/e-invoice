@@ -1,8 +1,12 @@
 import React from "react";
 import { Button } from "../../components/reuseables/button";
-import { signIn } from "@/lib/auth/auth";
+import { auth, signIn } from "@/lib/auth/auth";
+import { redirect } from "next/navigation";
 
-const Login = () => {
+const Login = async () => {
+  const session = await auth();
+  if (session?.user) redirect("dashboard");
+
   return (
     <div className="w-full px-4 h-screen flex items-center justify-center">
       <div className="p-6 w-full max-w-sm rounded-xl shadow-lg">
