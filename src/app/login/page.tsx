@@ -1,6 +1,6 @@
-import { Button } from "@/src/components/reuseables/button";
-import { signIn } from "@/src/lib/auth/auth";
 import React from "react";
+import { Button } from "../../components/reuseables/button";
+import { signIn } from "@/lib/auth/auth";
 
 const Login = () => {
   return (
@@ -12,9 +12,9 @@ const Login = () => {
         </header>
         <div className="mt-6 w-full">
           <form
-            action={async () => {
+            action={async (formdata) => {
               "use server";
-              await signIn();
+              await signIn("nodemailer", formdata);
             }}
             className="w-full space-y-5"
           >
@@ -25,6 +25,7 @@ const Login = () => {
               <input
                 id="email"
                 type="email"
+                name="email"
                 required
                 placeholder="user@gmail.com"
                 className="px-4 w-full rounded-lg border border-gray-600 h-10 outline-none focus:border-black focus:ring-1 ring-gray-200 placeholder:text-gray-500"
