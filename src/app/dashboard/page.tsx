@@ -15,6 +15,12 @@ const Home = () => {
         }}
       >
         <button type="submit">Logout</button>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste ipsam
+          ea voluptatem mollitia alias eos ipsa praesentium quos quaerat magni,
+          illo consequatur laborum natus. Dolorum et consequuntur impedit totam
+          doloribus?
+        </p>
       </form>
     </div>
   );
