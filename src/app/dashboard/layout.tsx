@@ -1,4 +1,4 @@
-import SideBar, { MobileSideBar } from "@/components/global/side-bar";
+import SideBar, { MobileNavigation } from "@/components/global/side-bar";
 import { userAuthenticated } from "@/helpers/session";
 import Image from "next/image";
 import Link from "next/link";
@@ -23,9 +23,9 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
             <SideBar />
           </Fragment>
         </aside>
-        <aside className="flex-grow px-6 overflow-auto bg-[#F4F5F6] h-screen">
-          <MobileSideBar />
-          {children}
+        <aside className="flex-grow bg-[#F4F5F6] h-screen">
+          <MobileNavigation />
+          <div className="px-6 overflow-auto">{children}</div>
         </aside>
       </div>
     </div>
