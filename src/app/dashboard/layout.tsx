@@ -1,6 +1,15 @@
 import SideBar, { MobileNavigation } from "@/components/global/side-bar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { auth } from "@/lib/auth/auth";
-import { Bell, ChevronDown, UserRound } from "lucide-react";
+import { Bell, ChevronDown, LogOut, UserRound } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -34,20 +43,35 @@ const DashboardLayout = async ({ children }: { children: ReactNode }) => {
                 <Bell color="#667085" />
               </button>
               <div className="w-[1px] h-1/2 bg-[#E0E2E7]"></div>
-              <button className="flex items-center justify-center gap-4 transition-all duration-300 ease-in-out">
-                <div className="size-10 rounded-full border border-gray-200 flex items-center justify-center">
-                  <UserRound color="#667085" size={24} />
-                </div>
-                <div className="flex gap-1 flex-col items-start">
-                  <p className="text-[#333843] font-semibold">
-                    {session.user.name || "User"}
-                  </p>
-                  <p className="text-[#667085] font-normal text-sm">
-                    {session.user.email}
-                  </p>
-                </div>
-                <ChevronDown color="#667085" size={20} />
-              </button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button className="flex items-center justify-center gap-4 transition-all duration-300 ease-in-out">
+                    <div className="size-10 rounded-full border border-gray-200 flex items-center justify-center">
+                      <UserRound color="#667085" size={24} />
+                    </div>
+                    <div className="flex gap-1 flex-col items-start">
+                      <p className="text-[#333843] font-semibold">
+                        {session.user.name || "User"}
+                      </p>
+                      <p className="text-[#667085] font-normal text-sm">
+                        {session.user.email}
+                      </p>
+                    </div>
+                    <ChevronDown color="#667085" size={20} />
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-40 space-y-2">
+                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>Profile</DropdownMenuItem>
+                  <DropdownMenuItem className="text-red-500 focus:bg-red-50 focus:text-red-500">
+                    Log out
+                    <DropdownMenuShortcut>
+                      <LogOut size={20} className="text-red-600" />
+                    </DropdownMenuShortcut>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </header>
           <div className="px-6">{children}</div>
