@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { Bolt, BookMinus, LayoutDashboardIcon } from "lucide-react";
+import { Bolt, BookMinus, LayoutDashboardIcon, Menu } from "lucide-react";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const dashboardLinks = [
   {
@@ -52,3 +53,21 @@ const SideBar = () => {
 };
 
 export default SideBar;
+
+export const MobileSideBar = () => {
+  return (
+    <div>
+      <header className="flex items-center justify-between w-full ">
+        <Link href={"/"} className="flex gap-2 items-center">
+          <div className="relative size-7">
+            <Image src={"/logo.png"} alt="logo" fill />
+          </div>
+          <p className="text-[18020C] font-bold text-2xl">Invoicing.</p>
+        </Link>
+        <button>
+          <Menu />
+        </button>
+      </header>
+    </div>
+  );
+};

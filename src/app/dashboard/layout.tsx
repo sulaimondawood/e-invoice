@@ -1,4 +1,4 @@
-import SideBar from "@/components/global/side-bar";
+import SideBar, { MobileSideBar } from "@/components/global/side-bar";
 import { userAuthenticated } from "@/helpers/session";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,8 +9,8 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
 
   return (
     <div>
-      <div className="min-h-screen flex">
-        <aside className="px-4 pt-6 pb-8 basis-[250px] bg-white flex flex-col h-screen border-r border-[#E4E4E4]">
+      <div className="min-h-screen w-full md:flex">
+        <aside className="hidden md:flex flex-col h-screen px-4 pt-6 pb-8 md:basis-[220px] lg:basis-[250px] bg-white  border-r border-[#E4E4E4]">
           <header>
             <Link href={"/"} className="flex gap-2 items-center">
               <div className="relative size-7">
@@ -23,7 +23,10 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
             <SideBar />
           </Fragment>
         </aside>
-        <aside className="px-6 overflow-auto">{children}</aside>
+        <aside className="flex-grow px-6 overflow-auto bg-[#F4F5F6] h-screen">
+          <MobileSideBar />
+          {children}
+        </aside>
       </div>
     </div>
   );
