@@ -60,7 +60,7 @@ export const MobileNavigation = () => {
 
   return (
     <div className="md:hidden overflow-hidden">
-      <header className="p-4 flex items-center justify-between w-full ">
+      <header className="fixed top-0 left-0 bg-white p-4 flex items-center justify-between w-full ">
         <Link href={"/"} className="flex gap-2 items-center">
           <div className="relative size-7">
             <Image src={"/logo.png"} alt="logo" fill />

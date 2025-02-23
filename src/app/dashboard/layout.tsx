@@ -8,7 +8,7 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { auth } from "@/lib/auth/auth";
+import { auth, signOut } from "@/lib/auth/auth";
 import { Bell, ChevronDown, LogOut, UserRound } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -36,8 +36,8 @@ const DashboardLayout = async ({ children }: { children: ReactNode }) => {
       </aside>
       <aside className="flex-grow bg-[#F4F5F6] h-screen">
         <MobileNavigation />
-        <section className="h-screen overflow-y-auto">
-          <header className="hidden md:flex justify-end bg-white p-5">
+        <section className="h-screen w-full overflow-y-auto">
+          <header className="fixed right-0 md:left-[220px] lg:left-[250px] z-50 hidden md:flex justify-end bg-white p-5">
             <div className="flex items-center gap-4">
               <button>
                 <Bell color="#667085" />
@@ -64,17 +64,27 @@ const DashboardLayout = async ({ children }: { children: ReactNode }) => {
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>Profile</DropdownMenuItem>
-                  <DropdownMenuItem className="text-red-500 focus:bg-red-50 focus:text-red-500">
-                    Log out
-                    <DropdownMenuShortcut>
-                      <LogOut size={20} className="text-red-600" />
-                    </DropdownMenuShortcut>
-                  </DropdownMenuItem>
+                  <form
+                    action={async () => {
+                      "use server";
+                      await signOut({
+                        redirectTo: "/login",
+                        redirect: true,
+                      });
+                    }}
+                  >
+                    <DropdownMenuItem className="text-red-500 focus:bg-red-50 focus:text-red-500">
+                      Log out
+                      <DropdownMenuShortcut>
+                        <LogOut size={20} className="text-red-600" />
+                      </DropdownMenuShortcut>
+                    </DropdownMenuItem>
+                  </form>
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
           </header>
-          <div className="px-6">{children}</div>
+          <div className="pt-20 md:pt-[88px] px-6">{children}</div>
         </section>
       </aside>
     </div>
