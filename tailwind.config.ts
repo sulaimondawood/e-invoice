@@ -12,6 +12,11 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        besley: ["var(--font-besley)"],
+        playFair: ["var(--font-playfair)"],
+        lato: ["var(--font-lato)"],
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

@@ -7,4 +7,6 @@ export const userAuthenticated = async () => {
   if (!session?.user) {
     redirect("/login");
   }
+
+  return session;
 };

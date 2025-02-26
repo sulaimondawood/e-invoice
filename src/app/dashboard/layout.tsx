@@ -1,3 +1,4 @@
+import { getUser } from "@/apis/auth";
 import SideBar, { MobileNavigation } from "@/components/global/side-bar";
 import {
   DropdownMenu,
@@ -17,8 +18,14 @@ import React, { ReactNode } from "react";
 
 const DashboardLayout = async ({ children }: { children: ReactNode }) => {
   const session = await auth();
+  const user = await getUser(session?.user?.id as string);
+
   if (!session?.user) {
     redirect("/login");
+  }
+
+  if (!user?.onboarded) {
+    redirect("/onboarding");
   }
 
   return (

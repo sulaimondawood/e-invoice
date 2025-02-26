@@ -2,8 +2,8 @@ import { userAuthenticated } from "@/helpers/session";
 import { signOut } from "@/lib/auth/auth";
 import React from "react";
 
-const Home = () => {
-  userAuthenticated();
+const Home = async () => {
+  await userAuthenticated();
 
   return (
     <div>
