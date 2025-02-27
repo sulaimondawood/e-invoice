@@ -51,14 +51,14 @@ const DashboardLayout = async ({ children }: { children: ReactNode }) => {
               </button>
               <div className="w-[1px] h-1/2 bg-[#E0E2E7]"></div>
               <DropdownMenu>
-                <DropdownMenuTrigger asChild>
+                <DropdownMenuTrigger asChild className="outline-none">
                   <button className="flex items-center justify-center gap-4 transition-all duration-300 ease-in-out">
                     <div className="size-10 rounded-full border border-gray-200 flex items-center justify-center">
                       <UserRound color="#667085" size={24} />
                     </div>
                     <div className="flex gap-1 flex-col items-start">
                       <p className="text-[#333843] font-semibold">
-                        {session.user.name || "User"}
+                        {user?.firstName || "User"}
                       </p>
                       <p className="text-[#667085] font-normal text-sm">
                         {session.user.email}
