@@ -40,8 +40,8 @@ const SideBar = () => {
             key={idx}
             className={`${
               pathname === data.link
-                ? "bg-[#1EB386] text-white rounded-md"
-                : "text-[#667085] hover:text-[#1EB386]"
+                ? "bg-black text-white rounded-md"
+                : "text-[#667085] hover:text-black"
             } flex items-center gap-2 p-3 transition-all duration-100`}
           >
             {data.icon}

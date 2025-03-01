@@ -1,5 +1,14 @@
 import { InvoiceFilters } from "@/components/invoice/invoice-filters";
+import { TableActions } from "@/components/invoice/table-actions";
 import { Button } from "@/components/reuseables/button";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { ROUTES } from "@/constants/route";
 import { Plus, Upload } from "lucide-react";
 import Link from "next/link";
@@ -28,7 +37,32 @@ const Invoice = () => {
       </header>
       <InvoiceFilters />
 
-      <section></section>
+      <section className="mt-10 bg-white border rounded-md">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="py-4">Invoice ID</TableHead>
+              <TableHead>Customer</TableHead>
+              <TableHead>Amount</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead>Date</TableHead>
+              <TableHead className="text-right"></TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <TableRow>
+              <TableCell>1</TableCell>
+              <TableCell>Dawood</TableCell>
+              <TableCell>3000</TableCell>
+              <TableCell>Paid</TableCell>
+              <TableCell>01-03-2025</TableCell>
+              <TableCell className="text-right">
+                <TableActions />
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </section>
     </div>
   );
 };
