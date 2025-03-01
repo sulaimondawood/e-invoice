@@ -51,7 +51,7 @@ const Invoice = () => {
           </TableHeader>
           <TableBody>
             <TableRow>
-              <TableCell>1</TableCell>
+              <TableCell className="py-4">1</TableCell>
               <TableCell>Dawood</TableCell>
               <TableCell>3000</TableCell>
               <TableCell>Paid</TableCell>
