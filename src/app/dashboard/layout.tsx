@@ -1,4 +1,5 @@
 import { getUser } from "@/apis/auth";
+import PageName from "@/components/global/page-name";
 import SideBar, { MobileNavigation } from "@/components/global/side-bar";
 import {
   DropdownMenu,
@@ -9,6 +10,7 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { userAuthenticated } from "@/helpers/session";
 import { auth, signOut } from "@/lib/auth/auth";
 import { Bell, ChevronDown, LogOut, UserRound } from "lucide-react";
 import Image from "next/image";
@@ -17,6 +19,8 @@ import { redirect } from "next/navigation";
 import React, { ReactNode } from "react";
 
 const DashboardLayout = async ({ children }: { children: ReactNode }) => {
+  await userAuthenticated();
+
   const session = await auth();
   const user = await getUser(session?.user?.id as string);
 
@@ -44,7 +48,8 @@ const DashboardLayout = async ({ children }: { children: ReactNode }) => {
       <aside className="flex-grow bg-[#F4F5F6] h-screen">
         <MobileNavigation />
         <section className="h-screen w-full overflow-y-auto">
-          <header className="fixed right-0 md:left-[220px] lg:left-[250px] z-50 hidden md:flex justify-end bg-white p-5">
+          <header className="fixed right-0 md:left-[220px] lg:left-[250px] z-50 hidden md:flex justify-between bg-white p-5">
+            <PageName />
             <div className="flex items-center gap-4">
               <button>
                 <Bell color="#667085" />
