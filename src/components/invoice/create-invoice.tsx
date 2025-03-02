@@ -18,18 +18,29 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { formatDate } from "@/utils";
-import { Calendar1Icon } from "lucide-react";
+import { ArrowLeft, Calendar1Icon } from "lucide-react";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const CreateInvoiceForm = () => {
   const [date, setDate] = useState<Date>();
+  const router = useRouter();
 
   return (
     <div className="bg-white mt-5 p-6 border rounded-lg">
       <header>
-        <h1 className="text-lg font-besley">
-          Invoice - <span className="font-bold">Invoice 001</span>
-        </h1>
+        <Button onClick={() => router.back()} variant={"outline"}>
+          <ArrowLeft />
+          <p>Back</p>
+        </Button>
+        <div className="mt-4 text-lg font-besley flex items-center gap-4">
+          <h1>
+            Invoice - <span className="font-bold">Invoice 001</span>
+          </h1>
+          <Button variant={"outline"} className="h-12">
+            Save as Draft
+          </Button>
+        </div>
       </header>
       <form>
         <section className="mt-10 grid grid-cols-2 gap-10">
