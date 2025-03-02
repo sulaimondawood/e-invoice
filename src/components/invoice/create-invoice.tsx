@@ -33,19 +33,28 @@ const CreateInvoiceForm = () => {
           <ArrowLeft />
           <p>Back</p>
         </Button>
-        <div className="mt-4 text-lg font-besley flex items-center gap-4">
-          <h1>
-            Invoice - <span className="font-bold">Invoice 001</span>
-          </h1>
+        <div className="mt-4 text-lg font-besley flex items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <h1>Invoice</h1>
+            <Input
+              type="text"
+              className="shadow-none rounded-none border-x-0 border-t-0 border-b border-b-black ring-0 focus:ring-0 focus-visible:ring-0 w-[150px]"
+              placeholder="Invoice name"
+            />
+          </div>
           <Button variant={"outline"} className="h-12">
             Save as Draft
           </Button>
         </div>
       </header>
-      <form>
+      <form className="mt-5">
+        <div className="w-[30%] space-y-2">
+          <label htmlFor="invoiceN">Invoice No</label>
+          <Input placeholder="INV001" type="text" className="h-12" />
+        </div>
         <section className="mt-10 grid grid-cols-2 gap-10">
           <aside>
-            <h1 className="font-semibold">From</h1>
+            <h1 className="font-semibold">From Business</h1>
             <div className="mt-2 space-y-4">
               <Input placeholder="Name" type="text" className="h-12" />
               <Input placeholder="Email" type="email" className="h-12" />
@@ -53,7 +62,7 @@ const CreateInvoiceForm = () => {
             </div>
           </aside>
           <aside>
-            <h1 className="font-semibold">To</h1>
+            <h1 className="font-semibold">To Client</h1>
             <div className="mt-2 space-y-4">
               <Input placeholder="Client name" className="h-12" />
               <Input placeholder="Client email" type="email" className="h-12" />

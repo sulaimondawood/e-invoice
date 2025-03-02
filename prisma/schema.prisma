@@ -85,3 +85,8 @@ model Authenticator {
 
   @@id([userId, credentialID])
 }
+
+model Invoice {
+  id   String @id @default(uuid())
+  name String
+}
