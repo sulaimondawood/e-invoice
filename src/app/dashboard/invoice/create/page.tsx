@@ -1,4 +1,10 @@
+import { Calendar } from "@/components/ui/calendar";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import React from "react";
 
 const CreateInvoice = () => {
@@ -30,6 +36,15 @@ const CreateInvoice = () => {
                 className="h-12"
               />
             </div>
+          </div>
+          <div>
+            <h1 className="font-semibold">Date</h1>
+            <Popover>
+              <PopoverTrigger></PopoverTrigger>
+              <PopoverContent>
+                <Calendar mode="single" />
+              </PopoverContent>
+            </Popover>
           </div>
         </section>
       </form>

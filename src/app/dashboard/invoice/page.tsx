@@ -17,7 +17,7 @@ import React from "react";
 const Invoice = () => {
   return (
     <div>
-      <header className="my-5 bg-white py-5 px-7 shadow-md rounded-md flex justify-between items-center">
+      <header className="my-5 bg-white py-5 px-7 shadow-xl rounded-md flex justify-between items-center">
         <h1 className="text-xl font-semibold">Create an invoice</h1>
         <aside className="flex gap-4">
           <Button>

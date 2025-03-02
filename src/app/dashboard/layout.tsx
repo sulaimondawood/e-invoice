@@ -40,7 +40,7 @@ const DashboardLayout = async ({ children }: { children: ReactNode }) => {
             <div className="relative size-7">
               <Image src={"/logo.png"} alt="logo" fill />
             </div>
-            <p className="text-[#18020C] font-bold text-2xl">Invoicing.</p>
+            <p className="text-[#18020C] font-bold text-2xl">Invoice.</p>
           </Link>
         </header>
         <SideBar />
