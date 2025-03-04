@@ -70,7 +70,15 @@ const CreateInvoiceForm = () => {
       >
         <div className="w-[30%] space-y-2">
           <label htmlFor="invoiceN">Invoice No</label>
-          <Input placeholder="INV001" type="text" className="h-12" />
+          <Input
+            placeholder="INV001"
+            type="text"
+            className="h-12"
+            name={fields.invoiceNo.name}
+            key={fields.invoiceNo.key}
+            defaultValue={fields.invoiceNo.initialValue}
+          />
+          <p className="text-red-500 text-sm">{fields.invoiceNo.errors}</p>
         </div>
         <section className="mt-10 grid grid-cols-2 gap-10">
           <aside>
