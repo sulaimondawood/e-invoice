@@ -19,12 +19,26 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { formatDate } from "@/utils";
 import { ArrowLeft, Calendar1Icon } from "lucide-react";
-import React, { useState } from "react";
+import React, { useActionState, useState } from "react";
 import { useRouter } from "next/navigation";
+import createInvoiceAction from "@/actions/invoice";
+import { useForm } from "@conform-to/react";
+import { parseWithZod } from "@conform-to/zod";
+import { invoiceSchema } from "@/lib/zod/schema";
 
 const CreateInvoiceForm = () => {
   const [date, setDate] = useState<Date>();
   const router = useRouter();
+  const [data, action] = useActionState(createInvoiceAction, undefined);
+
+  const [form, fields] = useForm({
+    shouldValidate: "onBlur",
+    shouldRevalidate: "onInput",
+    lastResult: data,
+    onValidate({ formData }) {
+      return parseWithZod(formData, { schema: invoiceSchema });
+    },
+  });
 
   return (
     <div className="bg-white mt-5 p-6 border rounded-lg">
@@ -47,7 +61,13 @@ const CreateInvoiceForm = () => {
           </Button>
         </div>
       </header>
-      <form className="mt-5">
+      <form
+        className="mt-5"
+        id={form.id}
+        onSubmit={form.onSubmit}
+        action={action}
+        noValidate
+      >
         <div className="w-[30%] space-y-2">
           <label htmlFor="invoiceN">Invoice No</label>
           <Input placeholder="INV001" type="text" className="h-12" />
