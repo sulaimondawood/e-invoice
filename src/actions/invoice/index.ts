@@ -18,6 +18,8 @@ const createInvoiceAction = async (
     return submission.reply();
   }
 
+  console.log(submission.value.date);
+
   await prisma.invoice.create({
     data: {
       businessAddress: submission.value.businessAddress,
@@ -33,7 +35,7 @@ const createInvoiceAction = async (
       invoiceNo: submission.value.invoiceNo,
       name: submission.value.name,
       quantity: submission.value.quantity,
-      amount: submission.value.amount,
+      amount: Number(formData.get("amount")) || 0,
       rate: submission.value.rate,
       status: submission.value.status,
       draft: false,

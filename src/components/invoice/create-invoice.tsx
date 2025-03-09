@@ -92,6 +92,7 @@ const CreateInvoiceForm = () => {
           <input
             type="hidden"
             name={fields.date.name}
+            key={fields.date.key}
             value={date ? date.toISOString() : ""}
           />
 
@@ -205,6 +206,7 @@ const CreateInvoiceForm = () => {
                       mode="single"
                       onSelect={(date) => setDate(date || new Date())}
                       selected={date}
+                      fromDate={new Date()}
                     />
                   </PopoverContent>
                 </Popover>
@@ -296,14 +298,11 @@ const CreateInvoiceForm = () => {
                     type="text"
                     className="h-12"
                     disabled
-                    name={fields.amount.name}
-                    key={fields.amount.key}
                     defaultValue={formatCurrency({
                       value: calculateTotal,
                       currency: currency as "USD" | "EUR" | "NGN" | "CAD",
                     })}
                   />
-                  <p className="text-red-500 text-xs">{fields.amount.errors}</p>
                 </div>
               </div>
             </aside>

@@ -90,7 +90,7 @@ model Authenticator {
 model Invoice {
   id              String          @id @default(uuid())
   name            String
-  invoiceNo       Int
+  invoiceNo       String
   draft           Boolean
   status          InvoiceStatus
   businessName    String
