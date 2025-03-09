@@ -3,12 +3,14 @@ import { parseWithZod } from "@conform-to/zod";
 import { userAuthenticated } from "@/helpers/session";
 import { invoiceSchema } from "@/lib/zod/schema";
 import { prisma } from "@/lib/db/prisma";
+import { redirect } from "next/navigation";
+import { BASE_ROUTES } from "@/constants/route";
 
 const createInvoiceAction = async (
   previousState: unknown,
   formData: FormData
 ) => {
-  await userAuthenticated();
+  const userSession = await userAuthenticated();
 
   const submission = parseWithZod(formData, { schema: invoiceSchema });
 
@@ -35,8 +37,11 @@ const createInvoiceAction = async (
       rate: submission.value.rate,
       status: submission.value.status,
       draft: false,
+      userId: userSession.user?.id,
     },
   });
+
+  redirect(BASE_ROUTES.invoice);
 };
 
 export default createInvoiceAction;
